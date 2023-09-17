@@ -1,7 +1,11 @@
 from django.shortcuts import render
-
+from .models import *
 def index(request):
-    return render(request, 'ebrand/index.html')
+    products = Product.objects.all()
+    context = {
+        'products':products
+    }
+    return render(request, 'ebrand/index.html' , context )
 
 def cart(request):
     return render(request, 'ebrand/cart.html')
